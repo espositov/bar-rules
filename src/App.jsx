@@ -140,7 +140,7 @@ function App() {
       const savedRules = localStorage.getItem(LOCAL_STORAGE_KEYS.USER_RULES);
 
       const loadDefaultRules = () => {
-        fetch(`${import.meta.env.BASE_URL}rules.json`)
+        fetch('./rules.json')
           .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return response.json();
