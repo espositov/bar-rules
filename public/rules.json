@@ -1,0 +1,689 @@
+{
+  "Agency": [
+    {
+      "id": 1,
+      "name": "Agency Creation Elements",
+      "text": "An agency relationship is created when one (principal) manifests intent that another (agent) act on his behalf and be subject to his control. Requires: (1) Assent - agent and principal must manifest assent through words or conduct; (2) Benefit - agent agrees to work on behalf of principal; and (3) Control - agent's actions are subject to principal's control."
+    },
+    {
+      "id": 2,
+      "name": "Actual Authority",
+      "text": "Principal causes agent to reasonably believe agent has authority to act. Express authority is through written or spoken words. Implied authority allows agent to take whatever reasonable steps are necessary to achieve principal's objective, within accepted business practice or custom."
+    },
+    {
+      "id": 3,
+      "name": "Apparent Authority",
+      "text": "Principal causes a third party to reasonably believe the agent has authority to act. Third party's reasonable belief can bind principal based upon past dealings, trade customs, etc. Inherent authority can arise from placing agent in a position of the type that has authority."
+    },
+    {
+      "id": 4,
+      "name": "Respondeat Superior",
+      "text": "Principal may be vicariously liable for the tortious acts of agent committed within the scope of employment. Requires employer-employee relationship where principal has the right to control the manner and means of agent's performance."
+    },
+    {
+      "id": 5,
+      "name": "Agent's Duty of Loyalty",
+      "text": "Agent has a duty of loyalty to work only for principal's benefit and to not compete, usurp principal's business opportunity nor take secret profits. Must keep principal informed and account for funds."
+    }
+  ],
+  "Civil Procedure": {
+    "Subject Matter Jurisdiction": [
+      {
+        "id": 6,
+        "name": "Federal Question Jurisdiction",
+        "text": "Federal courts have original jurisdiction over civil actions arising under the Constitution, laws, or treaties of the United States. The federal question must appear on the face of the plaintiff's well-pleaded complaint."
+      },
+      {
+        "id": 7,
+        "name": "Diversity Jurisdiction",
+        "text": "Federal courts have diversity jurisdiction when the amount in controversy exceeds $75,000 and there is complete diversity between citizens of different states. No plaintiff may be a citizen of the same state as any defendant."
+      },
+      {
+        "id": 8,
+        "name": "Supplemental Jurisdiction",
+        "text": "A court with subject matter jurisdiction over a claim may hear other claims if they share a common nucleus of operative fact. In diversity cases, use is limited to prevent destruction of complete diversity."
+      },
+      {
+        "id": 9,
+        "name": "Removal",
+        "text": "A defendant may remove a case from state to federal court if plaintiff's claim could have been originally filed in federal court. All defendants must consent, and notice must be filed within 30 days of service."
+      }
+    ],
+    "Personal Jurisdiction": [
+      {
+        "id": 10,
+        "name": "Personal Jurisdiction Standard",
+        "text": "A court may exercise personal jurisdiction over a person who is served with process in the forum state, or who has minimum contacts with the forum state such that maintenance of the suit does not offend traditional notions of fair play and substantial justice."
+      },
+      {
+        "id": 11,
+        "name": "Long Arm Statute",
+        "text": "A state's long arm statute allows courts to exercise jurisdiction over non-resident defendants who have sufficient contacts with the forum state, subject to constitutional due process limitations."
+      },
+      {
+        "id": 12,
+        "name": "General vs. Specific Jurisdiction",
+        "text": "General personal jurisdiction requires defendant to be domiciled in the state or have continuous and systematic contacts. Specific personal jurisdiction exists when the claim arises out of or is closely related to defendant's contact with the forum state."
+      }
+    ],
+    "Venue": [
+      {
+        "id": 13,
+        "name": "Federal Venue",
+        "text": "A civil action may be brought in a judicial district where any defendant resides if all defendants are residents of the State in which the district is located, or in a judicial district where a substantial part of the events or omissions giving rise to the claim occurred."
+      },
+      {
+        "id": 14,
+        "name": "Transfer of Venue",
+        "text": "If venue is proper, the court can transfer to another district with proper venue based on convenience of parties and witnesses and in the interest of justice. If venue is improper, the court must dismiss or transfer to a district where venue is proper."
+      }
+    ],
+    "Erie": [
+      {
+        "id": 15,
+        "name": "Erie Doctrine",
+        "text": "In diversity cases, federal courts must apply state substantive law but federal procedural law. The test is whether the rule affects the outcome of the litigation or creates forum shopping and inequitable administration of laws."
+      }
+    ],
+    "Pleadings": [
+      {
+        "id": 16,
+        "name": "Notice Pleading",
+        "text": "Under Federal Rule 8, a pleading must contain a short and plain statement of the claim showing that the pleader is entitled to relief. California requires fact pleading - more detailed factual allegations."
+      },
+      {
+        "id": 17,
+        "name": "Motion to Dismiss",
+        "text": "Rule 12(b) motions can challenge lack of subject matter jurisdiction, lack of personal jurisdiction, improper venue, insufficient process or service, failure to state a claim, or failure to join a necessary party."
+      },
+      {
+        "id": 18,
+        "name": "Amendments",
+        "text": "Amendments as of right are allowed once within 21 days after serving if no responsive pleading is required, or within 21 days of service of responsive pleading or 12(b) motion. Otherwise, need leave of court when justice requires."
+      }
+    ],
+    "Joinder": [
+      {
+        "id": 19,
+        "name": "Permissive Joinder",
+        "text": "Persons may be joined as plaintiffs or defendants in one action if their claims or the claims against them arise out of the same transaction or occurrence and involve common questions of law or fact."
+      },
+      {
+        "id": 20,
+        "name": "Compulsory Joinder",
+        "text": "A person must be joined as a party if complete relief cannot be accorded among existing parties in the person's absence, or the person claims an interest relating to the subject of the action and is so situated that disposing of the action may impair their ability to protect that interest."
+      },
+      {
+        "id": 21,
+        "name": "Class Action Requirements",
+        "text": "Class actions require: (1) Numerosity - class size so large that joinder is impracticable; (2) Commonality - common questions of law or fact; (3) Typicality - representative's claims are typical of the class; and (4) Adequacy - representative will adequately protect the class."
+      }
+    ],
+    "Discovery": [
+      {
+        "id": 22,
+        "name": "Discovery Scope",
+        "text": "Parties may obtain discovery regarding any nonprivileged matter that is relevant to any party's claim or defense and proportional to the case's importance, the amount in controversy, the parties' relative access to information, and the discovery's importance in resolving the issues."
+      },
+      {
+        "id": 23,
+        "name": "Work Product Doctrine",
+        "text": "Documents and tangible things prepared in anticipation of litigation or for trial by or for another party or its representative are protected from discovery unless the requesting party shows substantial need and inability to obtain equivalent materials by other means without undue hardship."
+      },
+      {
+        "id": 24,
+        "name": "Mandatory Disclosures",
+        "text": "Initial disclosures must include names and addresses of persons with discoverable information, copies or descriptions of documents and items, computation of damages and insurance agreements. California has no automatic initial mandatory disclosures."
+      }
+    ],
+    "Trial Procedure": [
+      {
+        "id": 25,
+        "name": "Right to Jury Trial",
+        "text": "In suits at common law where the value in controversy exceeds twenty dollars, the right of trial by jury shall be preserved. The test is whether the action is analogous to suits tried at common law at the time the Seventh Amendment was adopted."
+      },
+      {
+        "id": 26,
+        "name": "Summary Judgment",
+        "text": "There is no genuine issue of material fact and the moving party is entitled to judgment as a matter of law. Court will construe all evidence in the light most favorable to the nonmoving party."
+      }
+    ],
+    "Post-Trial Procedure": [
+      {
+        "id": 27,
+        "name": "Judgment as a Matter of Law",
+        "text": "A court may grant judgment as a matter of law if a reasonable jury would not have a legally sufficient evidentiary basis to find for the party on that issue. The motion may be made before the case is submitted to the jury or renewed after an adverse verdict."
+      },
+      {
+        "id": 28,
+        "name": "Motion for New Trial",
+        "text": "A motion for new trial must be made within 28 days after entry of judgment. Grounds include trial error resulting in unfair judgment, newly discovered evidence, prejudicial misconduct, or excessive/inadequate verdict."
+      }
+    ],
+    "Appeals": [
+      {
+        "id": 29,
+        "name": "Final Judgment Rule",
+        "text": "A party may appeal from a final judgment of a district court. A final judgment is one that ends the litigation on the merits and leaves nothing for the court to do but execute the judgment."
+      },
+      {
+        "id": 30,
+        "name": "Standards of Review",
+        "text": "Matters of law are reviewed de novo; findings of a jury are affirmed if supported by substantial evidence; factual findings of a judge are overturned only if clearly erroneous; discretionary rulings are overturned if the judge abused discretion."
+      }
+    ],
+    "Claim Preclusion": [
+      {
+        "id": 31,
+        "name": "Res Judicata Elements",
+        "text": "Claim preclusion bars relitigation when: (1) there was a final judgment on the merits, (2) the claims are the same or arise from the same transaction or occurrence, and (3) the parties are the same or in privity with parties in the first action."
+      }
+    ],
+    "Issue Preclusion": [
+      {
+        "id": 32,
+        "name": "Collateral Estoppel Elements",
+        "text": "Issue preclusion prevents relitigation of an issue when: (1) the issue was actually litigated and decided, (2) the determination was essential to the judgment, and (3) the party against whom preclusion is asserted was a party or in privity with a party to the first action."
+      }
+    ]
+  },
+  "Community Property": [
+    {
+      "id": 33,
+      "name": "Community Property Presumption",
+      "text": "All property, earnings, or debt acquired during marriage are presumed community property. Property acquired before marriage or after divorce, or at any time by gift or inheritance is presumed separate property."
+    },
+    {
+      "id": 34,
+      "name": "Management and Control",
+      "text": "As of 1/1/75, each spouse has equal management and control over community property. Exceptions include bank accounts (limited to named party), gifts to third parties (require written consent of both spouses), and community business decisions."
+    },
+    {
+      "id": 35,
+      "name": "Quasi-Community Property",
+      "text": "Property acquired by spouses in another state that would have been community property were it acquired while living in California. Treated as community property at death and divorce."
+    },
+    {
+      "id": 36,
+      "name": "Transmutations",
+      "text": "Before 1985, oral agreements were sufficient. Beginning in 1985, agreement must be in writing with an express declaration by the adversely affected spouse, except for personal gifts of insubstantial value."
+    },
+    {
+      "id": 37,
+      "name": "Separate Property Business Formulas",
+      "text": "Pereira formula (favors community): SP = Value at marriage + (Value at marriage × Fair rate of return × Years of marriage). Van Camp formula (favors separate): CP = (Value of services - Family expenses) × Years of marriage."
+    },
+    {
+      "id": 38,
+      "name": "Equal Division Rule",
+      "text": "Absent an agreement, community property and quasi-community property will be divided equally with each spouse receiving one-half of the net community estate after subtraction of joint obligations."
+    }
+  ],
+  "Constitutional Law": {
+    "Judicial Review": [
+      {
+        "id": 39,
+        "name": "Standing Requirements",
+        "text": "Plaintiff must have: (1) Injury - concrete and particularized; (2) Causation - injury fairly traceable to challenged action; and (3) Redressability - requested relief likely to redress the injury."
+      },
+      {
+        "id": 40,
+        "name": "Ripeness and Mootness",
+        "text": "Ripeness - issue when there is no actual or imminent threat of harm (too soon). Mootness - issue when legal proceedings will have no effect (too late), unless class action or issue capable of repetition but evading review."
+      }
+    ],
+    "Congressional Powers": [
+      {
+        "id": 41,
+        "name": "Commerce Clause",
+        "text": "Congress can regulate channels, instrumentalities, and any activity that substantially affects interstate commerce. For noneconomic activity, substantial economic effect must be established and is not presumed."
+      },
+      {
+        "id": 42,
+        "name": "Taxing and Spending Power",
+        "text": "Congress has power to tax if reasonably related to raising revenue. Congress has power to spend for general welfare and can use spending power to regulate activity by conditioning federal funding."
+      }
+    ],
+    "State Regulation": [
+      {
+        "id": 43,
+        "name": "Dormant Commerce Clause",
+        "text": "In absence of federal regulation, state regulation is valid if no discrimination against out-of-state commerce or undue burden on interstate commerce. Market participant exception allows discrimination when state acts as buyer/seller."
+      },
+      {
+        "id": 44,
+        "name": "Privileges and Immunities Clause",
+        "text": "No state may deprive a citizen of another state the privileges and immunities it accords its own citizens. Applies to fundamental rights like employment. Corporations are not 'citizens' under this clause."
+      }
+    ],
+    "Individual Rights": [
+      {
+        "id": 45,
+        "name": "Substantive Due Process",
+        "text": "Government action that infringes a fundamental right is subject to strict scrutiny. For non-fundamental rights, only rational basis review applies. Fundamental rights include voting, travel, and privacy."
+      },
+      {
+        "id": 46,
+        "name": "Equal Protection",
+        "text": "Suspect classifications (race, ethnicity, national origin) trigger strict scrutiny. Quasi-suspect classifications (gender, legitimacy) trigger intermediate scrutiny. All other classifications get rational basis review."
+      },
+      {
+        "id": 47,
+        "name": "Free Speech",
+        "text": "Content-based restrictions on speech are subject to strict scrutiny. Content-neutral time, place, and manner restrictions are subject to intermediate scrutiny. The forum (public vs. nonpublic) affects the analysis."
+      }
+    ]
+  },
+  "Contracts and Sales": [
+    {
+      "id": 48,
+      "name": "Contract Formation",
+      "text": "A contract is formed when there is an offer, acceptance, and consideration. Under common law, acceptance must be a mirror image of the offer. Under UCC, acceptance with additional or different terms may still form a contract."
+    },
+    {
+      "id": 49,
+      "name": "UCC vs. Common Law",
+      "text": "UCC applies to sale of goods (tangible personal property). Common law applies to services and real estate contracts. For mixed contracts, apply the predominant purpose test."
+    },
+    {
+      "id": 50,
+      "name": "Statute of Frauds",
+      "text": "Certain contracts must be in writing: Marriage, Sureties, One year, UCC goods $500+, Real estate (MOUR). Must be signed by party to be charged. Exceptions include part performance and specially manufactured goods."
+    },
+    {
+      "id": 51,
+      "name": "UCC Battle of the Forms",
+      "text": "Acceptance with different terms is valid unless agreement to changed terms is made a condition of acceptance. Between merchants, new terms control unless they materially alter the offer, original offer limited acceptance, or offeror objects."
+    },
+    {
+      "id": 52,
+      "name": "Breach and Remedies",
+      "text": "Common law uses substantial performance standard. UCC uses perfect tender rule - if goods or delivery are defective in any way, buyer can reject. Expectation damages put non-breaching party in position as if contract performed."
+    },
+    {
+      "id": 53,
+      "name": "Third Party Beneficiaries",
+      "text": "Intended beneficiaries (not incidental) can sue on the contract. Contract modification okay until third party's rights vest. Donee beneficiaries generally can only sue promisor; creditor beneficiaries can sue either party."
+    }
+  ],
+  "Corporations": [
+    {
+      "id": 54,
+      "name": "Corporate Formation",
+      "text": "Corporation formed when incorporator files articles with state and pays filing fee. Articles must include: corporate name, agent for service, incorporators' names/addresses, and number of authorized shares."
+    },
+    {
+      "id": 55,
+      "name": "Piercing the Corporate Veil",
+      "text": "Courts pierce the veil for fraud, undercapitalization, or alter ego (failure to observe formalities). More likely granted in tort cases than contract cases. Protects shareholders from personal liability when properly formed."
+    },
+    {
+      "id": 56,
+      "name": "Directors' Duty of Care",
+      "text": "Must act as a prudent person in like circumstances using any special skills. Business Judgment Rule protects good faith actions absent fraud, illegality, or self-dealing from court interference."
+    },
+    {
+      "id": 57,
+      "name": "Directors' Duty of Loyalty",
+      "text": "Must act in good faith and in best interest of corporation. Conflict of interest transactions require disclosure and approval by disinterested directors/shareholders, or must be fair to corporation."
+    },
+    {
+      "id": 58,
+      "name": "Shareholder Derivative Suits",
+      "text": "Shareholder sues on behalf of corporation to vindicate corporate rights. Requires: standing (shareholder when wrong occurred), demand on board (wait 90 days unless rejected), and fair/adequate representation."
+    },
+    {
+      "id": 59,
+      "name": "Fundamental Changes",
+      "text": "Merger, sale of substantially all assets, amendment of articles (after stock issued), and dissolution require approval by majority of board and majority of shareholders entitled to vote."
+    }
+  ],
+  "Criminal Law": [
+    {
+      "id": 60,
+      "name": "Mens Rea Categories",
+      "text": "Specific intent (FIAT - First-degree murder, Inchoate crimes, Assault, Theft), General intent, Malice (reckless disregard of high probability of harm), and Strict liability (no mental state required)."
+    },
+    {
+      "id": 61,
+      "name": "Accomplice Liability",
+      "text": "Acts with requisite mens rea to aid principal before or during commission of crime. Liable for planned and foreseeable crimes. Can withdraw by repudiating aid or countermanding prior aid before events are unstoppable."
+    },
+    {
+      "id": 62,
+      "name": "Conspiracy",
+      "text": "Agreement between two or more persons with intent to achieve unlawful purpose, plus overt act in furtherance (majority rule). Liable for all foreseeable crimes committed in furtherance of conspiracy."
+    },
+    {
+      "id": 63,
+      "name": "Felony Murder Rule",
+      "text": "Unintended but foreseeable death caused by and occurring during dangerous or enumerated felony (BARRK - Burglary, Arson, Rape, Robbery, Kidnapping). Death of co-felon by victim/police resistance not subject to FMR."
+    },
+    {
+      "id": 64,
+      "name": "Self-Defense",
+      "text": "May use reasonable force to prevent imminent unlawful harm. Non-deadly force may be used to repel non-deadly force. Deadly force may be used when reasonably necessary to prevent death/serious injury or serious felony."
+    }
+  ],
+  "Criminal Procedure": [
+    {
+      "id": 65,
+      "name": "Fourth Amendment Searches",
+      "text": "Search occurs when government violates reasonable expectation of privacy. Generally requires warrant based on probable cause, or must meet an exception (ESCAPES - Exigent circumstances, Search incident to arrest, Consent, Auto exception, Plain view, Evidence from administrative search, Stop and frisk)."
+    },
+    {
+      "id": 66,
+      "name": "Miranda Rights",
+      "text": "Before custodial interrogation, suspects must be warned of right to remain silent, that statements may be used against them, right to counsel, and that counsel will be appointed if they cannot afford one."
+    },
+    {
+      "id": 67,
+      "name": "Exclusionary Rule",
+      "text": "Evidence obtained in violation of Fourth or Fifth Amendment rights is suppressed. Fruit of poisonous tree doctrine excludes derivative evidence unless inevitable discovery, independent source, or attenuation exception applies."
+    },
+    {
+      "id": 68,
+      "name": "Terry Stop and Frisk",
+      "text": "Officer may detain person based on reasonable suspicion of crime. Detention must be brief and only long enough to verify or dispel suspicions. May frisk for weapons if reasonable belief person is armed and dangerous."
+    },
+    {
+      "id": 69,
+      "name": "Double Jeopardy",
+      "text": "Protects against second prosecution for same offense after acquittal/conviction and multiple punishments for same offense. Jeopardy attaches when jury empaneled or first witness sworn in bench trial."
+    }
+  ],
+  "Evidence": [
+    {
+      "id": 70,
+      "name": "Hearsay Rule",
+      "text": "Hearsay is an out-of-court statement offered for the truth of the matter asserted. Inadmissible unless it falls within a recognized exception or exclusion."
+    },
+    {
+      "id": 71,
+      "name": "Present Sense Impression",
+      "text": "Statement describing or explaining an event made while declarant was perceiving the event or immediately thereafter. Admissible as hearsay exception."
+    },
+    {
+      "id": 72,
+      "name": "Excited Utterance",
+      "text": "Statement about a startling event made while under stress of the event. Admissible as hearsay exception. California has 'spontaneous statement' rule that functions similarly."
+    },
+    {
+      "id": 73,
+      "name": "Character Evidence",
+      "text": "Generally inadmissible to prove conduct in conformity. In criminal cases, defendant may introduce good character evidence, and prosecution may rebut. Specific acts admissible for MIMIC purposes (Motive, Intent, Mistake, Identity, Common plan)."
+    },
+    {
+      "id": 74,
+      "name": "Impeachment by Prior Conviction",
+      "text": "Convictions involving dishonesty or false statement always relevant. Other felonies require Rule 403 balancing for witnesses, modified 403 for criminal defendants. Must be within 10 years unless probative value substantially outweighs prejudice."
+    },
+    {
+      "id": 75,
+      "name": "Best Evidence Rule",
+      "text": "When proving contents of writing, recording, or photograph, the original or reliable duplicate must be produced unless original is unavailable, lost, destroyed, or opponent refuses to produce."
+    },
+    {
+      "id": 76,
+      "name": "Attorney-Client Privilege",
+      "text": "Protects confidential communications between attorney and client made for purpose of seeking/providing legal advice. Client holds privilege. Exceptions for future crime/fraud or disputes between attorney and client."
+    }
+  ],
+  "Partnerships": [
+    {
+      "id": 77,
+      "name": "Partnership Formation",
+      "text": "Association of two or more persons to carry on a for-profit business as co-owners. No formalities required. Sharing of profits presumes partnership absent exception (debt payments, wages, rent, etc.)."
+    },
+    {
+      "id": 78,
+      "name": "Partner Authority",
+      "text": "Each partner has equal right to manage and control. Ordinary business decisions require majority approval. Acts requiring unanimous consent include admission of new partners and fundamental changes to partnership agreement."
+    },
+    {
+      "id": 79,
+      "name": "Partner Liability",
+      "text": "Partners are jointly and severally liable for all partnership obligations. Incoming partner's liability for pre-existing obligations limited to capital contribution. Dissociated partner liable for obligations incurred before dissociation."
+    },
+    {
+      "id": 80,
+      "name": "Fiduciary Duties",
+      "text": "Partners owe duty of loyalty (not to compete, advance adverse interest, or self-deal without approval) and duty of care (not to engage in grossly negligent, reckless, or intentional misconduct)."
+    },
+    {
+      "id": 81,
+      "name": "Partnership Dissolution",
+      "text": "At-will partnership dissolves when any partner dissociates. Term partnership may dissolve by its terms, unanimous consent, or if half of remaining partners consent after dissociation. Followed by winding up process."
+    }
+  ],
+  "Professional Responsibility": [
+    {
+      "id": 82,
+      "name": "Attorney-Client Privilege",
+      "text": "Communications between attorney and client made for the purpose of seeking or providing legal advice are privileged and protected from disclosure, unless the privilege is waived by the client or an exception applies."
+    },
+    {
+      "id": 83,
+      "name": "Conflict of Interest Rule",
+      "text": "An attorney shall not represent a client if the representation involves a concurrent conflict of interest, unless the attorney reasonably believes they can provide competent representation to each affected client and each client gives informed written consent."
+    },
+    {
+      "id": 84,
+      "name": "Duty of Confidentiality",
+      "text": "Lawyer must not disclose any information related to representation of client absent informed consent. Broader than attorney-client privilege. Exceptions include preventing death/substantial bodily harm or preventing crime/fraud causing substantial financial harm."
+    },
+    {
+      "id": 85,
+      "name": "Fee Agreements",
+      "text": "Fees must be reasonable and not unconscionable. California requires written contract for services exceeding $1,000 with exceptions. Contingent fees allowed except in divorce and criminal cases, must be in writing."
+    },
+    {
+      "id": 86,
+      "name": "Solicitation Rules",
+      "text": "In-person, live telephone, or real-time electronic solicitation prohibited if significant motive is pecuniary gain, unless contacted person is lawyer or has family/personal/professional relationship with soliciting lawyer."
+    },
+    {
+      "id": 87,
+      "name": "Duty to Court",
+      "text": "Lawyer must not make false statements of fact or law, must correct false statements, and must disclose adverse controlling authority. Cannot introduce evidence lawyer knows to be false."
+    }
+  ],
+  "Real Property": {
+    "Ownership": [
+      {
+        "id": 88,
+        "name": "Fee Simple Absolute",
+        "text": "The most complete form of ownership, giving the owner the right to possess, use, and dispose of the property during life and to pass it to heirs or devisees upon death."
+      },
+      {
+        "id": 89,
+        "name": "Life Estate",
+        "text": "Interest that lasts for the life of a designated person. Life tenant has right to possess and use property but cannot commit waste. Remainder or reversion follows the life estate."
+      },
+      {
+        "id": 90,
+        "name": "Defeasible Fees",
+        "text": "Fee simple determinable ends automatically on occurrence of stated event ('so long as', 'while', 'during'). Fee simple subject to condition subsequent requires action by grantor ('but if', 'provided that')."
+      },
+      {
+        "id": 91,
+        "name": "Joint Tenancy",
+        "text": "Requires four unities (PITT - Possession, Interest, Title, Time) and right of survivorship. Severed by inter vivos transfer or mortgage in title theory states. Creates tenancy in common upon severance."
+      }
+    ],
+    "Landlord-Tenant": [
+      {
+        "id": 92,
+        "name": "Types of Tenancies",
+        "text": "Tenancy for years (fixed time), periodic tenancy (renews automatically), tenancy at will (terminated by either party), tenancy at sufferance (holdover tenant)."
+      },
+      {
+        "id": 93,
+        "name": "Implied Warranty of Habitability",
+        "text": "Implied in residential leases only. Landlord must maintain premises in habitable condition. Tenant remedies include withholding rent or repair and deduct if landlord put on notice."
+      },
+      {
+        "id": 94,
+        "name": "Assignment vs. Sublease",
+        "text": "Assignment is complete transfer of remaining lease term; sublease is partial transfer. Landlord can collect rent from tenant in privity of contract or privity of estate."
+      }
+    ],
+    "Titles": [
+      {
+        "id": 95,
+        "name": "Adverse Possession",
+        "text": "Continuous, actual, open and notorious, hostile, and exclusive possession for statutory period. Continuous use can be tacked with prior possessor in privity. Exclusive means not shared with true owner."
+      },
+      {
+        "id": 96,
+        "name": "Recording Act Priority",
+        "text": "California follows race-notice recording statute. Subsequent bona fide purchaser for value without notice who records first will prevail over prior grantee who failed to record."
+      },
+      {
+        "id": 97,
+        "name": "Deed Requirements",
+        "text": "Must identify parties, contain words of transfer, describe property, and be signed by grantor. Delivery requires intent to transfer and acceptance. Recording not required for validity but provides constructive notice."
+      }
+    ],
+    "Use Rights": [
+      {
+        "id": 98,
+        "name": "Easement Creation",
+        "text": "Express easements must be in writing. Implied easements arise by: Prescription (continuous, actual, open, hostile use), Implication (prior common ownership, continuous/apparent use, reasonably necessary), Necessity (landlocked property), or Estoppel."
+      },
+      {
+        "id": 99,
+        "name": "Real Covenants",
+        "text": "When damages sought for breach, requires: writing, intent to run, touch and concern, notice (burden only), and privity (horizontal for burden, vertical for running to successors)."
+      },
+      {
+        "id": 100,
+        "name": "Equitable Servitudes",
+        "text": "When injunctive relief sought, requires: writing, intent, touch and concern, and notice by purchaser. Implied reciprocal servitudes arise from common plan with notice."
+      }
+    ]
+  },
+  "Remedies": [
+    {
+      "id": 101,
+      "name": "Expectation Damages",
+      "text": "Put plaintiff in position performance would have achieved. In contracts, includes general damages (benefit of bargain) plus incidental and consequential damages if reasonably foreseeable at time of contracting."
+    },
+    {
+      "id": 102,
+      "name": "Specific Performance",
+      "text": "Equitable remedy compelling performance of contract. Available when monetary damages inadequate (unique goods, real property), terms are certain, conditions satisfied, relief is equitable, and enforcement is feasible."
+    },
+    {
+      "id": 103,
+      "name": "Preliminary Injunction",
+      "text": "To preserve status quo pending trial. Requires: irreparable harm with no adequate legal remedy, likelihood of success on merits, and balance of hardships favors plaintiff. Security bond required."
+    },
+    {
+      "id": 104,
+      "name": "Constructive Trust",
+      "text": "Judicial remedy imposing duty to convey property when defendant would be unjustly enriched. Defendant holds property 'in trust' for plaintiff. Preferable when property value increased."
+    },
+    {
+      "id": 105,
+      "name": "Restitution",
+      "text": "Remedy to correct unjust enrichment. Measure of recovery can be value to defendant, cost to plaintiff, market value, or stipulated price. Conscious wrongdoer may face accounting for profits."
+    }
+  ],
+  "Torts": [
+    {
+      "id": 106,
+      "name": "Negligence Elements",
+      "text": "To establish negligence, plaintiff must prove: (1) defendant owed a duty of care, (2) defendant breached that duty, (3) breach was the actual and proximate cause of harm, and (4) plaintiff suffered damages."
+    },
+    {
+      "id": 107,
+      "name": "Battery",
+      "text": "Intentional harmful or offensive contact with another person. Intent to cause the specific harm not required; intent to cause the contact is sufficient. Contact can be indirect through objects."
+    },
+    {
+      "id": 108,
+      "name": "Assault",
+      "text": "Intent to cause plaintiff to anticipate imminent harmful or offensive contact, and plaintiff's anticipation of such contact. No actual contact required. Plaintiff must be aware of the threat."
+    },
+    {
+      "id": 109,
+      "name": "Proximate Cause",
+      "text": "Foreseeable injury in a foreseeable manner. Direct cause creates liability for foreseeable harm. Indirect cause requires analysis of whether intervening force was foreseeable (not superseding) or unforeseeable (superseding)."
+    },
+    {
+      "id": 110,
+      "name": "Strict Liability",
+      "text": "Applies to abnormally dangerous activities (uncommon with high risk of foreseeable harm), wild animals or domestic animals with dangerous propensities, and defective products by commercial suppliers."
+    },
+    {
+      "id": 111,
+      "name": "Products Liability",
+      "text": "Strict liability requires: commercial supplier, defective product (manufacturing, design, or warning defect), causation, and damages. Defenses include comparative fault, assumption of risk, and unforeseeable misuse."
+    },
+    {
+      "id": 112,
+      "name": "Defamation",
+      "text": "Defamatory statement of/concerning plaintiff, published to third party, causing damages. Public figures must prove actual malice (knowledge of falsity or reckless disregard for truth). Truth is complete defense."
+    }
+  ],
+  "Trusts": [
+    {
+      "id": 113,
+      "name": "Trust Creation Elements",
+      "text": "Valid trust requires: (1) settlor with capacity and intent, (2) trustee, (3) trust property (res), (4) identifiable beneficiaries, and (5) valid trust purpose. No writing required unless Statute of Frauds applies."
+    },
+    {
+      "id": 114,
+      "name": "Charitable Trust",
+      "text": "Created for charitable purpose benefiting community. Large class of unidentifiable beneficiaries required. Not subject to Rule Against Perpetuities. Cy pres doctrine allows modification when original purpose becomes impossible."
+    },
+    {
+      "id": 115,
+      "name": "Spendthrift Trust",
+      "text": "Restricts beneficiary's power to transfer equitable interest. Creditors cannot reach assets until paid to beneficiary. Exceptions for child/spousal support, tax liens, and in some jurisdictions, creditors providing necessities."
+    },
+    {
+      "id": 116,
+      "name": "Trustee Duties",
+      "text": "Duty of loyalty (no self-dealing, conflicts of interest), duty of care (prudent investor rule), duty to diversify investments, duty of impartiality between beneficiaries, duty to inform and account."
+    },
+    {
+      "id": 117,
+      "name": "Trust Modification",
+      "text": "Revocable trusts can be amended by settlor. Irrevocable trusts can be modified with consent of all beneficiaries if not contrary to material purpose, or with settlor and beneficiary consent even if contrary to material purpose."
+    }
+  ],
+  "Wills": [
+    {
+      "id": 118,
+      "name": "Will Execution Requirements",
+      "text": "Attested will requires: signed writing with testamentary intent by person with capacity (18+ and sound mind), witnessed by two witnesses present at same time. Holographic will requires material provisions in testator's handwriting and signature."
+    },
+    {
+      "id": 119,
+      "name": "Intestate Succession",
+      "text": "Surviving spouse takes all community/quasi-community property. For separate property: spouse takes 100% if no issue/parents/siblings; 50% if parent/sibling survives; 50% with one child; 1/3 with multiple children."
+    },
+    {
+      "id": 120,
+      "name": "Will Revocation",
+      "text": "Can be revoked by subsequent instrument (later will or codicil), physical act (canceling, tearing, destroying with intent), or operation of law (divorce revokes provisions for ex-spouse)."
+    },
+    {
+      "id": 121,
+      "name": "Anti-Lapse Statute",
+      "text": "Saves gifts to predeceasing beneficiaries who are relatives of testator/testator's spouse and leave issue. The issue take the deceased beneficiary's share. Does not apply to class gifts unless specifically saved."
+    },
+    {
+      "id": 122,
+      "name": "Ademption",
+      "text": "Specific bequest of property no longer in testator's estate at death adeems (fails). California follows intent theory - specific bequest adeems only if consistent with testator's intent."
+    },
+    {
+      "id": 123,
+      "name": "Pretermitted Heir",
+      "text": "Child born/adopted after will execution may take intestate share if omission appears accidental. Exceptions: omission appears intentional from will, testator had other children and left estate to other parent, or child otherwise provided for."
+    }
+  ]
+}
