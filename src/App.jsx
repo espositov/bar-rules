@@ -875,7 +875,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-6 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Container */}
-        <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200/50 p-8">
+        <div className="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200/40 p-6">
         {/* Header and Action Buttons */}
         <div className="flex items-start justify-between gap-6 mb-6">
           {/* Header */}
@@ -897,7 +897,7 @@ function App() {
           </header>
 
           {/* Action Buttons Container */}
-          <div className="bg-gray-50/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/60">
+          <div className="bg-gray-50/60 rounded-2xl p-3 shadow-md border border-gray-200/40">
             <div className="grid grid-cols-3 gap-2">
             {/* Row 1 */}
             <div className="relative group">
