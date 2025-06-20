@@ -877,9 +877,9 @@ function App() {
         {/* Main Container */}
         <div className="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200/40 p-6">
         {/* Header and Action Buttons */}
-        <div className="flex items-start justify-between gap-6 mb-6">
+        <div className="flex items-center justify-between gap-6 mb-6">
           {/* Header */}
-          <header className="bg-gray-50/50 rounded-xl p-4 border border-gray-200/50 shadow-sm flex-1">
+          <header className="bg-gray-50/60 rounded-2xl p-3 shadow-md border border-gray-200/40 flex-1">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-3 h-3 bg-gray-800 rounded-full"></div>
               <h1 className="text-3xl font-black text-gray-800">
