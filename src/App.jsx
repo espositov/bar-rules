@@ -874,6 +874,8 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-6 px-4">
       <div className="max-w-7xl mx-auto">
+        {/* Main Container */}
+        <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 p-8">
         {/* Header and Action Buttons */}
         <div className="flex items-start justify-between gap-6 mb-6">
           {/* Header */}
@@ -1439,6 +1441,7 @@ function App() {
               </div>
             </section>
           )}
+        </div>
         </div>
       </div>
       
