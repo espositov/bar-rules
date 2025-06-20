@@ -875,7 +875,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-6 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Container */}
-        <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 p-8">
+        <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200/50 p-8">
         {/* Header and Action Buttons */}
         <div className="flex items-start justify-between gap-6 mb-6">
           {/* Header */}
@@ -896,8 +896,9 @@ function App() {
             )}
           </header>
 
-          {/* Action Buttons Grid */}
-          <div className="grid grid-cols-3 gap-2">
+          {/* Action Buttons Container */}
+          <div className="bg-gray-50/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200/60">
+            <div className="grid grid-cols-3 gap-2">
             {/* Row 1 */}
             <div className="relative group">
               <input 
@@ -963,6 +964,7 @@ function App() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </button>
+            </div>
           </div>
         </div>
         
