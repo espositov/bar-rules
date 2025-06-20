@@ -879,7 +879,7 @@ function App() {
         {/* Header and Action Buttons */}
         <div className="flex items-start justify-between gap-6 mb-6">
           {/* Header */}
-          <header className="bg-white/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20 flex-1">
+          <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-3 h-3 bg-gray-800 rounded-full"></div>
               <h1 className="text-3xl font-black text-gray-800">
@@ -894,7 +894,7 @@ function App() {
                 <span className="text-sm text-amber-800 font-medium">{uploadProgress}</span>
               </div>
             )}
-          </header>
+          </div>
 
           {/* Action Buttons Container */}
           <div className="bg-gray-50/60 rounded-2xl p-3 shadow-md border border-gray-200/40">
