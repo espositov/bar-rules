@@ -38,3 +38,6 @@ lerna-debug.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Claude IDE files
+.claude/
