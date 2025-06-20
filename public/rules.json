@@ -1,31 +1,91 @@
 {
-  "Agency": [
-    {
-      "id": 1,
-      "name": "Agency Creation Elements",
-      "text": "An agency relationship is created when one (principal) manifests intent that another (agent) act on his behalf and be subject to his control. Requires: (1) Assent - agent and principal must manifest assent through words or conduct; (2) Benefit - agent agrees to work on behalf of principal; and (3) Control - agent's actions are subject to principal's control."
-    },
-    {
-      "id": 2,
-      "name": "Actual Authority",
-      "text": "Principal causes agent to reasonably believe agent has authority to act. Express authority is through written or spoken words. Implied authority allows agent to take whatever reasonable steps are necessary to achieve principal's objective, within accepted business practice or custom."
-    },
-    {
-      "id": 3,
-      "name": "Apparent Authority",
-      "text": "Principal causes a third party to reasonably believe the agent has authority to act. Third party's reasonable belief can bind principal based upon past dealings, trade customs, etc. Inherent authority can arise from placing agent in a position of the type that has authority."
-    },
-    {
-      "id": 4,
-      "name": "Respondeat Superior",
-      "text": "Principal may be vicariously liable for the tortious acts of agent committed within the scope of employment. Requires employer-employee relationship where principal has the right to control the manner and means of agent's performance."
-    },
-    {
-      "id": 5,
-      "name": "Agent's Duty of Loyalty",
-      "text": "Agent has a duty of loyalty to work only for principal's benefit and to not compete, usurp principal's business opportunity nor take secret profits. Must keep principal informed and account for funds."
-    }
-  ],
+  "Business Associations": {
+    "Agency": [
+      {
+        "id": 101,
+        "name": "Formation of Agency Relationship",
+        "text": "An agency relationship is created when the principal manifests assent to another person (the agent) that the agent shall act on the principal's behalf and subject to the principal's control, and the agent manifests assent or otherwise consents so to act."
+      },
+      {
+        "id": 102,
+        "name": "Express vs. Implied Authority",
+        "text": "Express authority is authority that the principal has stated in clear, direct, and definite language. Implied authority is authority the agent reasonably believes they possess based on the principal's conduct."
+      },
+      {
+        "id": 103,
+        "name": "Apparent Authority Requirements",
+        "text": "Apparent authority exists when (1) the principal's manifestations to a third party give the third party reason to believe that the agent has authority to act, and (2) the third party reasonably relies on that manifestation."
+      }
+    ],
+    "Partnerships": [
+      {
+        "id": 104,
+        "name": "General Partnership Formation",
+        "text": "A general partnership is formed when two or more persons carry on as co-owners a business for profit, whether or not the persons intend to form a partnership. No written agreement is required."
+      },
+      {
+        "id": 105,
+        "name": "Partnership Authority",
+        "text": "Each partner is an agent of the partnership for partnership business. An act of a partner binds the partnership if the act is for carrying on the partnership business in the usual way or authorized by the partnership agreement."
+      },
+      {
+        "id": 106,
+        "name": "Limited Partnership Formation",
+        "text": "A limited partnership is formed by filing a certificate with the state. Must have at least one general partner with management authority and unlimited liability, and at least one limited partner with limited liability but no management rights."
+      }
+    ],
+    "Corporations": [
+      {
+        "id": 107,
+        "name": "Corporate Formation Requirements",
+        "text": "To form a corporation, incorporators must file articles of incorporation with the state that include: (1) corporate name, (2) number of authorized shares, (3) registered agent and office, and (4) incorporator information."
+      },
+      {
+        "id": 108,
+        "name": "Piercing the Corporate Veil",
+        "text": "Courts may pierce the corporate veil when: (1) there is such unity of interest that separate personalities do not exist, and (2) an inequitable result would follow if the corporation's acts are treated as those of the corporation alone."
+      },
+      {
+        "id": 109,
+        "name": "Director Duties and Liabilities",
+        "text": "Directors owe fiduciary duties of care and loyalty to the corporation. The business judgment rule protects directors from liability for decisions made in good faith, with reasonable care, and in the corporation's best interests."
+      },
+      {
+        "id": 110,
+        "name": "Shareholder Rights",
+        "text": "Shareholders have rights to: (1) vote on fundamental corporate changes, (2) elect directors, (3) inspect corporate records, (4) receive dividends when declared, and (5) share in liquidation proceeds."
+      }
+    ],
+    "Limited Liability Companies": [
+      {
+        "id": 111,
+        "name": "LLC Formation",
+        "text": "An LLC is formed by filing articles of organization with the state. Members typically adopt an operating agreement governing management structure, profit/loss allocation, and transfer restrictions."
+      },
+      {
+        "id": 112,
+        "name": "LLC Management Structure",
+        "text": "LLCs can be member-managed (all members participate in management) or manager-managed (designated managers run daily operations while members retain voting rights on major decisions)."
+      }
+    ],
+    "Fiduciary Duties": [
+      {
+        "id": 113,
+        "name": "Duty of Care",
+        "text": "Directors and officers must exercise the care of an ordinarily prudent person in similar circumstances. This includes making informed decisions, attending meetings, and overseeing corporate affairs."
+      },
+      {
+        "id": 114,
+        "name": "Duty of Loyalty",
+        "text": "Directors and officers must act in good faith and in the corporation's best interests. They cannot compete with the corporation, usurp corporate opportunities, or engage in self-dealing without proper disclosure and approval."
+      },
+      {
+        "id": 115,
+        "name": "Business Judgment Rule",
+        "text": "A presumption that directors acted on an informed basis, in good faith, and in the honest belief that their actions were in the corporation's best interests. Protects directors from liability for business decisions unless gross negligence or conflicts of interest."
+      }
+    ]
+  },
   "Civil Procedure": {
     "Subject Matter Jurisdiction": [
       {
