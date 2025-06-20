@@ -369,7 +369,7 @@ function App() {
 
     return (
       <div
-        className="relative font-mono text-lg leading-relaxed p-6 bg-white border border-gray-300 rounded-xl min-h-[160px] cursor-text focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+        className="relative font-mono text-lg leading-relaxed p-6 bg-white border border-gray-300 rounded-xl min-h-[160px] cursor-text focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm whitespace-pre-wrap break-words"
         tabIndex={0} onKeyDown={handlePracticeKeyDown} onClick={(e) => e.currentTarget.focus()}
         role="textbox" aria-multiline="true" aria-label="Typing practice area"
       >
