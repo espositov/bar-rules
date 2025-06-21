@@ -48,11 +48,11 @@ const SettingsPopup = ({
             {/* Data Source */}
             <div className="border-t pt-4">
               <label className="text-base font-semibold block mb-2">Data Source</label>
-              <div className="p-2 rounded bg-blue-50 border border-blue-200 text-sm text-blue-700 mb-2">
-                  {isUsingExcelData ? '✓ Using Custom Excel Data' : '📄 Using Default JSON Data'}
+              <div className={`p-2 rounded text-sm mb-2 ${isUsingExcelData ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-amber-50 border border-amber-200 text-amber-700'}`}>
+                  {isUsingExcelData ? '✓ Using Your Custom Rules' : '⚠️ Using Sample Demo Rules - Upload Your Own'}
               </div>
               <div className="space-y-2">
-                  <button onClick={downloadExcelTemplate} className="w-full px-3 py-2 text-sm bg-green-100 text-green-700 rounded hover:bg-green-200 border border-green-300">Download Excel Template</button>
+                  <button onClick={downloadExcelTemplate} className="w-full px-3 py-2 text-sm bg-green-100 text-green-700 rounded hover:bg-green-200 border border-green-300">Download Sample Template</button>
                   <div className="relative">
                       <input type="file" accept=".xlsx,.xls" onChange={(e) => e.target.files && handleExcelUpload(e.target.files[0])} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" id="settings-excel-upload"/>
                       <label htmlFor="settings-excel-upload" className="block w-full text-center px-3 py-2 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200 border border-blue-300 cursor-pointer">Upload Excel File</label>

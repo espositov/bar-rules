@@ -6,7 +6,8 @@ function Header({
   onExcelUpload, 
   onBrowseClick, 
   onDownloadProgress, 
-  onSettingsClick 
+  onSettingsClick,
+  isUsingExcelData 
 }) {
   return (
     <div className="flex items-center justify-between gap-6 mb-6">
@@ -42,8 +43,12 @@ function Header({
           />
           <label 
             htmlFor="toolbar-excel-upload" 
-            className="flex items-center justify-center px-3 py-2 text-xs font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md"
-            title="Upload Excel File"
+            className={`flex items-center justify-center px-3 py-2 text-xs font-medium rounded-lg cursor-pointer transition-all duration-200 shadow-md hover:shadow-lg ${
+              isUsingExcelData 
+                ? 'text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200' 
+                : 'text-white bg-blue-600 hover:bg-blue-700 border border-blue-600 animate-pulse'
+            }`}
+            title="Upload your own rule statements"
           >
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -78,12 +83,12 @@ function Header({
         <button 
           onClick={downloadExcelTemplate} 
           className="flex items-center justify-center px-3 py-2 text-xs font-medium text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
-          title="Download Template"
+          title="Download Sample Template"
         >
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
-          Template
+          Sample Template
         </button>
         
         <button 
