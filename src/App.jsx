@@ -285,7 +285,7 @@ function App() {
               showComparison={uiState.showComparison}
               comparisonResult={uiState.comparisonResult}
               userText={uiState.userText}
-              showHints={uiState.showHints}
+            showHints={uiState.showHints}
               selfRating={uiState.selfRating}
               generateHints={generateHints}
               onLoadNewRule={() => loadNewRule(resetUIForNewRuleSelection)}

@@ -60,18 +60,6 @@ function StudyArea({
             </div>
             
             <div className="flex items-center gap-2 ml-3">
-              {!practiceMode && (
-                <button 
-                  onClick={onToggleHints} 
-                  className={`p-2 rounded-lg transition-all duration-200 ${showHints ? 'bg-amber-100 text-amber-700' : 'text-amber-600 hover:bg-amber-100'}`}
-                  title={showHints ? "Hide Hint" : "Get Hint"}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </button>
-              )}
-              
               <button 
                 onClick={onLoadNewRule} 
                 className="p-2 text-violet-600 hover:bg-violet-100 rounded-lg transition-all duration-200"
@@ -166,13 +154,27 @@ function StudyArea({
                 </span>
               </div>
               
-              <button
-                onClick={onCheckAnswer}
-                disabled={!userText.trim()}
-                className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 font-semibold shadow-lg hover:shadow-xl disabled:shadow-none"
-              >
-                Check Answer
-              </button>
+              <div className="flex items-center gap-3">
+                {!practiceMode && (
+                  <button
+                    onClick={onToggleHints}
+                    className="flex items-center gap-2 px-6 py-3 bg-yellow-300 text-yellow-900 rounded-xl hover:bg-yellow-400 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Get Hint
+                  </button>
+                )}
+                
+                <button
+                  onClick={onCheckAnswer}
+                  disabled={!userText.trim()}
+                  className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl hover:from-emerald-600 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 font-semibold shadow-lg hover:shadow-xl disabled:shadow-none"
+                >
+                  Check Answer
+                </button>
+              </div>
             </div>
           </div>
         )}

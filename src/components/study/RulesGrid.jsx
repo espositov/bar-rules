@@ -167,9 +167,6 @@ function RulesGrid({
                             }`}
                           >
                             <h4 className="font-semibold text-sm truncate">{rule.name}</h4>
-                            <p className={`text-xs mt-1 line-clamp-2 ${isSelected ? 'text-blue-100' : 'text-gray-600'}`}>
-                              {rule.text.substring(0,80)}...
-                            </p>
                           </div>
                       );
                   })}
