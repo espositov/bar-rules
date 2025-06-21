@@ -194,18 +194,29 @@ const useRulesData = (LOCAL_STORAGE_KEYS) => {
     const rules = getRulesFromSelection(selectedTopic, selectedSubtopic);
     if (rules.length > 0) {
       let randomRule;
-      if (rules.length === 1 || !currentRule) {
-        randomRule = rules[Math.floor(Math.random() * rules.length)];
+      const currentRuleId = currentRule ? getRuleId(currentRule) : null;
+      
+      // First, try to get unmastered rules that aren't the current rule
+      const unmasteredRules = rules.filter(r => {
+        const ruleId = getRuleId(r);
+        return !masteredRules.has(ruleId) && ruleId !== currentRuleId;
+      });
+      
+      if (unmasteredRules.length > 0) {
+        // Select from unmastered rules
+        randomRule = unmasteredRules[Math.floor(Math.random() * unmasteredRules.length)];
       } else {
-        const currentRuleId = getRuleId(currentRule);
+        // Fallback: if all rules are mastered or only current rule is unmastered,
+        // just exclude the current rule (original behavior)
         const filteredRules = rules.filter(r => getRuleId(r) !== currentRuleId);
         const pool = filteredRules.length > 0 ? filteredRules : rules;
         randomRule = pool[Math.floor(Math.random() * pool.length)];
       }
+      
       setCurrentRule(randomRule);
       if (resetUI) resetUI();
     }
-  }, [selectedTopic, selectedSubtopic, getRulesFromSelection, currentRule, getRuleId]);
+  }, [selectedTopic, selectedSubtopic, getRulesFromSelection, currentRule, getRuleId, masteredRules]);
 
   // Load initial data
   useEffect(() => {

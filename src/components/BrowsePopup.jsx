@@ -152,6 +152,7 @@ const BrowsePopup = ({
     }
   }, [rulesByTopic, LOCAL_STORAGE_KEYS.USER_RULES]);
 
+
   const tableData = useMemo(() => {
     const data = [];
     Object.entries(rulesByTopic).forEach(([topic, topicData]) => {
@@ -179,21 +180,23 @@ const BrowsePopup = ({
   }, [tableData, filterByTopic, searchQuery]);
 
   return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-xl shadow-2xl max-w-6xl w-full h-[90vh] flex flex-col overflow-hidden">
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+        <div className="bg-white rounded-xl shadow-2xl max-w-sm sm:max-w-4xl lg:max-w-6xl w-full h-[95vh] sm:h-[90vh] flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                <h2 className="text-3xl font-black text-gray-900">Browse All Rules</h2>
+          <div className="p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50 flex-shrink-0">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full"></div>
+                  <h2 className="text-lg sm:text-2xl lg:text-3xl font-black text-gray-900">Browse All Rules</h2>
+                </div>
+                <button
+                  onClick={() => setShowBrowsePopup(false)}
+                  className="h-10 w-10 sm:h-8 sm:w-8 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg text-xl font-bold transition-colors"
+                >×</button>
               </div>
-              <button
-                onClick={() => setShowBrowsePopup(false)}
-                className="absolute top-4 right-4 h-8 w-8 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg text-2xl"
-              >×</button>
-              <div className="flex items-center gap-3">
-                <select value={filterByTopic} onChange={(e) => setFilterByTopic(e.target.value)} className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <select value={filterByTopic} onChange={(e) => setFilterByTopic(e.target.value)} className="px-3 py-2 sm:py-2 border border-gray-300 rounded-lg text-sm sm:text-base flex-shrink-0">
                   <option value="all">All Topics ({Object.keys(rulesByTopic).length})</option>
                   {Object.keys(rulesByTopic).map(topic => (
                     <option key={topic} value={topic}>{topic} ({
@@ -202,37 +205,37 @@ const BrowsePopup = ({
                     })</option>
                   ))}
                 </select>
-                <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search..." className="w-full sm:w-80 pl-10 pr-4 py-2 border rounded-lg"/>
+                <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search..." className="flex-1 px-3 py-2 border rounded-lg text-sm sm:text-base"/>
               </div>
-            </div>
-            <div className="flex flex-wrap items-center justify-between gap-2 mt-4">
-              <button onClick={() => setShowAddRow(!showAddRow)} className="h-10 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                {showAddRow ? 'Cancel Add' : 'Add New Rule'}
-              </button>
-              <div className="text-sm text-gray-600">Showing {filteredAndSortedData.length} of {tableData.length} rules</div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <button onClick={() => setShowAddRow(!showAddRow)} className="h-10 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base">
+                  {showAddRow ? 'Cancel Add' : 'Add New Rule'}
+                </button>
+                <div className="text-xs sm:text-sm text-gray-600">Showing {filteredAndSortedData.length} of {tableData.length} rules</div>
+              </div>
             </div>
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4">
             {showAddRow && (
-              <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 mb-4 space-y-4">
-                <h3 className="text-lg font-semibold text-blue-800">Add New Rule</h3>
+              <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 sm:p-6 mb-4 space-y-4">
+                <h3 className="text-base sm:text-lg font-semibold text-blue-800">Add New Rule</h3>
                 <div>
-                  <label className="text-sm font-medium">Topic *</label>
-                  <select value={isAddingNewTopic ? '__ADD_NEW__' : newTopic} onChange={(e) => handleTopicChange(e.target.value)} className="w-full p-3 border rounded-lg">
+                  <label className="text-sm font-medium block mb-1">Topic *</label>
+                  <select value={isAddingNewTopic ? '__ADD_NEW__' : newTopic} onChange={(e) => handleTopicChange(e.target.value)} className="w-full p-3 border rounded-lg text-sm sm:text-base">
                     <option value="">Select Topic</option>
                     {Object.keys(rulesByTopic).map((t) => <option key={t} value={t}>{t}</option>)}
                     <option value="__ADD_NEW__">Add new topic...</option>
                   </select>
-                  {isAddingNewTopic && <input type="text" value={customTopicName} onChange={(e) => setCustomTopicName(e.target.value)} placeholder="Enter new topic name" className="w-full p-3 border rounded-lg mt-2" autoFocus />}
+                  {isAddingNewTopic && <input type="text" value={customTopicName} onChange={(e) => setCustomTopicName(e.target.value)} placeholder="Enter new topic name" className="w-full p-3 border rounded-lg mt-2 text-sm sm:text-base" autoFocus />}
                 </div>
-                <div><label className="text-sm font-medium">Subtopic</label><input type="text" value={newSubtopic} onChange={(e) => setNewSubtopic(e.target.value)} placeholder="Subtopic (optional)" className="w-full p-3 border rounded-lg"/></div>
-                <div><label className="text-sm font-medium">Rule Name *</label><input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Enter rule name" className="w-full p-3 border rounded-lg"/></div>
-                <div><label className="text-sm font-medium">Rule Text *</label><textarea value={newText} onChange={(e) => setNewText(e.target.value)} placeholder="Enter rule text" className="w-full p-3 border rounded-lg h-32"/></div>
-                <div className="flex gap-3">
-                  <button onClick={handleAddRule} disabled={!(isAddingNewTopic ? customTopicName : newTopic) || !newName || !newText} className="h-10 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300">Save Rule</button>
-                  <button onClick={() => setShowAddRow(false)} className="h-10 px-6 bg-gray-500 text-white rounded-lg hover:bg-gray-600">Cancel</button>
+                <div><label className="text-sm font-medium block mb-1">Subtopic</label><input type="text" value={newSubtopic} onChange={(e) => setNewSubtopic(e.target.value)} placeholder="Subtopic (optional)" className="w-full p-3 border rounded-lg text-sm sm:text-base"/></div>
+                <div><label className="text-sm font-medium block mb-1">Rule Name *</label><input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Enter rule name" className="w-full p-3 border rounded-lg text-sm sm:text-base"/></div>
+                <div><label className="text-sm font-medium block mb-1">Rule Text *</label><textarea value={newText} onChange={(e) => setNewText(e.target.value)} placeholder="Enter rule text" className="w-full p-3 border rounded-lg h-24 sm:h-32 text-sm sm:text-base"/></div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button onClick={handleAddRule} disabled={!(isAddingNewTopic ? customTopicName : newTopic) || !newName || !newText} className="h-10 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 transition-colors text-sm sm:text-base">Save Rule</button>
+                  <button onClick={() => setShowAddRow(false)} className="h-10 px-6 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm sm:text-base">Cancel</button>
                 </div>
               </div>
             )}
@@ -247,25 +250,25 @@ const BrowsePopup = ({
                   const isExpanded = expandedCards.has(cardId);
                   return (
                     <div key={cardId} className="bg-white border border-gray-200 rounded-lg group">
-                      <div className="p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-2">
+                      <div className="p-3 sm:p-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getTopicColor(row.topic)}`}>{row.topic}</span>
                             {row.subtopic !== '-' && <span className="text-xs text-gray-500">→ {row.subtopic}</span>}
                           </div>
-                          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100">
-                            <button onClick={() => copyToClipboard(row.rule.text, row.rule.name)} title="Copy" className="h-8 w-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-lg">📋</button>
-                            <button onClick={() => { setSelectedTopic(row.topic); setSelectedSubtopic(row.subtopic === '-' ? '' : row.subtopic); setCurrentRule(row.rule); resetUIForNewRuleSelection(); setShowBrowsePopup(false);}} className="h-8 px-3 text-xs text-white bg-blue-600 hover:bg-blue-700 rounded-lg">Study</button>
-                            <button onClick={() => handleDeleteRule(row.topic, row.subtopic, row.rule.id)} title="Delete" className="h-8 w-8 flex items-center justify-center text-red-600 hover:bg-red-100 rounded-lg">🗑️</button>
+                          <div className="flex items-center gap-2 sm:opacity-0 sm:group-hover:opacity-100">
+                            <button onClick={() => { setSelectedTopic(row.topic); setSelectedSubtopic(row.subtopic === '-' ? '' : row.subtopic); setCurrentRule(row.rule); resetUIForNewRuleSelection(); setShowBrowsePopup(false);}} className="h-9 px-4 text-xs sm:text-xs text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">Study</button>
+                            <button onClick={() => copyToClipboard(row.rule.text, row.rule.name)} title="Copy" className="h-9 w-9 flex items-center justify-center text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">📋</button>
+                            <button onClick={() => handleDeleteRule(row.topic, row.subtopic, row.rule.id)} title="Delete" className="h-9 w-9 flex items-center justify-center text-red-600 hover:bg-red-100 rounded-lg transition-colors">🗑️</button>
                           </div>
                         </div>
                         <div className="cursor-pointer" onClick={() => toggleCardExpansion(cardId)}>
                           <div className="flex items-start gap-3">
-                            <h3 className="font-semibold text-gray-900 hover:text-blue-600 flex-shrink-0">{row.rule.name}</h3>
-                            {!isExpanded && <div className="text-gray-600 text-sm line-clamp-2 flex-1" dangerouslySetInnerHTML={{ __html: formatLegalText(row.rule.text.substring(0,150) + (row.rule.text.length > 150 ? '...' : '')) }} />}
-                            <button className="flex-shrink-0 text-gray-400 hover:text-gray-600">{isExpanded ? '🔼' : '🔽'}</button>
+                            <h3 className="font-semibold text-sm sm:text-base text-gray-900 hover:text-blue-600 flex-shrink-0">{row.rule.name}</h3>
+                            {!isExpanded && <div className="text-gray-600 text-xs sm:text-sm line-clamp-2 flex-1" dangerouslySetInnerHTML={{ __html: formatLegalText(row.rule.text.substring(0,150) + (row.rule.text.length > 150 ? '...' : '')) }} />}
+                            <button className="flex-shrink-0 text-gray-400 hover:text-gray-600 text-lg sm:text-base">{isExpanded ? '🔼' : '🔽'}</button>
                           </div>
-                          {isExpanded && <div className="mt-3 pt-3 border-t" dangerouslySetInnerHTML={{ __html: formatLegalText(row.rule.text) }} />}
+                          {isExpanded && <div className="mt-3 pt-3 border-t text-xs sm:text-sm" dangerouslySetInnerHTML={{ __html: formatLegalText(row.rule.text) }} />}
                         </div>
                       </div>
                     </div>

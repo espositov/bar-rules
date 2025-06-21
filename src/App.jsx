@@ -25,6 +25,7 @@ const LOCAL_STORAGE_KEYS = {
   RULE_CONFIDENCE: 'ruleConfidence',
   TOPIC_DISPLAY_MODE: 'topicDisplayMode',
   AVAILABLE_RULES_DISPLAY_MODE: 'availableRulesDisplayMode',
+  SUBTOPIC_DISPLAY_MODE: 'subtopicDisplayMode',
   SHOW_PROGRESS_PERCENTAGES: 'showProgressPercentages',
 };
 
@@ -64,6 +65,7 @@ function App() {
   const [displayPrefs, setDisplayPrefs] = useState({
     topicDisplayMode: localStorage.getItem(LOCAL_STORAGE_KEYS.TOPIC_DISPLAY_MODE) || 'dropdown',
     availableRulesDisplayMode: localStorage.getItem(LOCAL_STORAGE_KEYS.AVAILABLE_RULES_DISPLAY_MODE) || 'buttons',
+    subtopicDisplayMode: localStorage.getItem(LOCAL_STORAGE_KEYS.SUBTOPIC_DISPLAY_MODE) || 'buttons',
     showProgressPercentages: localStorage.getItem(LOCAL_STORAGE_KEYS.SHOW_PROGRESS_PERCENTAGES) === 'true'
   });
 
@@ -84,6 +86,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEYS.AVAILABLE_RULES_DISPLAY_MODE, displayPrefs.availableRulesDisplayMode);
   }, [displayPrefs.availableRulesDisplayMode]);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEYS.SUBTOPIC_DISPLAY_MODE, displayPrefs.subtopicDisplayMode);
+  }, [displayPrefs.subtopicDisplayMode]);
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEYS.SHOW_PROGRESS_PERCENTAGES, String(displayPrefs.showProgressPercentages));
@@ -266,6 +272,7 @@ function App() {
             masteredRules={masteredRules}
             ruleConfidence={ruleConfidence}
             displayMode={displayPrefs.availableRulesDisplayMode}
+            subtopicDisplayMode={displayPrefs.subtopicDisplayMode}
             showProgressPercentages={displayPrefs.showProgressPercentages}
             practiceMode={uiState.practiceMode}
             hasSubtopics={hasSubtopics}
@@ -330,6 +337,8 @@ function App() {
         setTopicDisplayMode={(value) => updateDisplayPrefs({ topicDisplayMode: value })}
         availableRulesDisplayMode={displayPrefs.availableRulesDisplayMode}
         setAvailableRulesDisplayMode={(value) => updateDisplayPrefs({ availableRulesDisplayMode: value })}
+        subtopicDisplayMode={displayPrefs.subtopicDisplayMode}
+        setSubtopicDisplayMode={(value) => updateDisplayPrefs({ subtopicDisplayMode: value })}
         showProgressPercentages={displayPrefs.showProgressPercentages}
         setShowProgressPercentages={(value) => updateDisplayPrefs({ showProgressPercentages: value })}
         isUsingExcelData={isUsingExcelData}

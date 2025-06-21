@@ -8,6 +8,7 @@ function RulesGrid({
   masteredRules,
   ruleConfidence,
   displayMode,
+  subtopicDisplayMode,
   showProgressPercentages,
   practiceMode,
   hasSubtopics,
@@ -35,49 +36,95 @@ function RulesGrid({
               <h2 className="text-base font-bold text-orange-800">Subtopics</h2>
             </div>
             
-            <div className="grid grid-cols-2 gap-2">
-              {Object.keys(rulesByTopic[selectedTopic] || {}).map((subtopic) => {
-                const progress = getSubtopicProgress(subtopic);
-                const subtopicRules = rulesByTopic[selectedTopic][subtopic] || [];
-                
-                return (
-                  <button 
-                    key={subtopic} 
-                    onClick={() => onSubtopicSelect(subtopic)}
-                    className={`group relative overflow-hidden rounded-lg p-2 text-left transition-all duration-200 ${
-                      selectedSubtopic === subtopic 
-                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md' 
-                        : 'bg-white hover:bg-orange-50 border border-orange-300 hover:border-orange-400'
-                    }`}
-                  >
-                    <div className="flex flex-col">
-                      <h3 className={`font-semibold text-xs leading-tight truncate ${selectedSubtopic === subtopic ? 'text-white' : 'text-gray-800'}`}>
-                        {subtopic}
-                      </h3>
-                      <div className="flex justify-between items-center mt-1">
-                        <p className={`text-xs ${selectedSubtopic === subtopic ? 'text-orange-100' : 'text-gray-500'}`}>
-                          {subtopicRules.length}
-                        </p>
+            {subtopicDisplayMode === 'buttons' ? (
+              <div className="grid grid-cols-2 gap-2">
+                {Object.keys(rulesByTopic[selectedTopic] || {}).map((subtopic) => {
+                  const progress = getSubtopicProgress(subtopic);
+                  const subtopicRules = rulesByTopic[selectedTopic][subtopic] || [];
+                  
+                  return (
+                    <button 
+                      key={subtopic} 
+                      onClick={() => onSubtopicSelect(subtopic)}
+                      className={`group relative overflow-hidden rounded-lg p-2 text-left transition-all duration-200 ${
+                        selectedSubtopic === subtopic 
+                          ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md' 
+                          : 'bg-white hover:bg-orange-50 border border-orange-300 hover:border-orange-400'
+                      }`}
+                    >
+                      <div className="flex flex-col">
+                        <h3 className={`font-semibold text-xs leading-tight truncate ${selectedSubtopic === subtopic ? 'text-white' : 'text-gray-800'}`}>
+                          {subtopic}
+                        </h3>
+                        <div className="flex justify-between items-center mt-1">
+                          <p className={`text-xs ${selectedSubtopic === subtopic ? 'text-orange-100' : 'text-gray-500'}`}>
+                            {subtopicRules.length}
+                          </p>
+                          
+                          {showProgressPercentages && (
+                            <span className={`text-xs font-medium ${selectedSubtopic === subtopic ? 'text-orange-100' : 'text-gray-600'}`}>
+                              {progress}%
+                            </span>
+                          )}
+                        </div>
                         
-                        {showProgressPercentages && (
-                          <span className={`text-xs font-medium ${selectedSubtopic === subtopic ? 'text-orange-100' : 'text-gray-600'}`}>
-                            {progress}%
-                          </span>
-                        )}
+                        {/* Compact Progress bar */}
+                        <div className={`mt-1 h-0.5 rounded-full overflow-hidden ${selectedSubtopic === subtopic ? 'bg-orange-400' : 'bg-gray-200'}`}>
+                          <div 
+                            className={`h-full transition-all duration-300 ${selectedSubtopic === subtopic ? 'bg-white' : 'bg-orange-500'}`}
+                            style={{ width: `${progress}%` }}
+                          ></div>
+                        </div>
                       </div>
-                      
-                      {/* Compact Progress bar */}
-                      <div className={`mt-1 h-0.5 rounded-full overflow-hidden ${selectedSubtopic === subtopic ? 'bg-orange-400' : 'bg-gray-200'}`}>
-                        <div 
-                          className={`h-full transition-all duration-300 ${selectedSubtopic === subtopic ? 'bg-white' : 'bg-orange-500'}`}
-                          style={{ width: `${progress}%` }}
-                        ></div>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="bg-gray-50 rounded-xl border border-gray-200 max-h-64 overflow-y-auto">
+                <div className="space-y-1 p-2">
+                  {Object.keys(rulesByTopic[selectedTopic] || {}).map((subtopic) => {
+                    const progress = getSubtopicProgress(subtopic);
+                    const subtopicRules = rulesByTopic[selectedTopic][subtopic] || [];
+                    const isSelected = selectedSubtopic === subtopic;
+                    
+                    return (
+                      <div 
+                        key={subtopic} 
+                        onClick={() => onSubtopicSelect(subtopic)}
+                        className={`p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                          isSelected 
+                            ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md' 
+                            : 'bg-white hover:bg-orange-50 border border-gray-100 hover:border-orange-200'
+                        }`}
+                      >
+                        <div className="flex justify-between items-center">
+                          <h4 className={`font-semibold text-sm truncate ${isSelected ? 'text-white' : 'text-gray-800'}`}>
+                            {subtopic}
+                          </h4>
+                          <div className="flex items-center gap-2 ml-2">
+                            <span className={`text-xs ${isSelected ? 'text-orange-100' : 'text-gray-500'}`}>
+                              {subtopicRules.length}
+                            </span>
+                            {showProgressPercentages && (
+                              <span className={`text-xs font-medium ${isSelected ? 'text-orange-100' : 'text-gray-600'}`}>
+                                {progress}%
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <div className={`mt-2 h-1 rounded-full overflow-hidden ${isSelected ? 'bg-orange-400' : 'bg-gray-200'}`}>
+                          <div 
+                            className={`h-full transition-all duration-300 ${isSelected ? 'bg-white' : 'bg-orange-500'}`}
+                            style={{ width: `${progress}%` }}
+                          ></div>
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         )}
         
