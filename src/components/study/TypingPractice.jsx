@@ -12,12 +12,60 @@ function TypingPractice({
     const input = userText;
     const inputLen = input.length;
 
+    // Split text into words and spaces
+    const elements = [];
+    let currentWord = '';
+    let charIndex = 0;
+
+    for (let i = 0; i < target.length; i++) {
+      const char = target[i];
+      
+      if (char === ' ') {
+        // If we have a word, add it to elements
+        if (currentWord) {
+          const wordStart = charIndex - currentWord.length;
+          elements.push({
+            type: 'word',
+            text: currentWord,
+            startIdx: wordStart,
+            endIdx: charIndex - 1
+          });
+          currentWord = '';
+        }
+        // Add space as separate element
+        elements.push({
+          type: 'space',
+          text: ' ',
+          startIdx: charIndex,
+          endIdx: charIndex
+        });
+        charIndex++;
+      } else {
+        currentWord += char;
+        charIndex++;
+      }
+    }
+    
+    // Add final word if exists
+    if (currentWord) {
+      const wordStart = charIndex - currentWord.length;
+      elements.push({
+        type: 'word',
+        text: currentWord,
+        startIdx: wordStart,
+        endIdx: charIndex - 1
+      });
+    }
+
     return (
       <div
-        className="relative font-mono text-lg leading-relaxed p-6 bg-white border border-gray-300 rounded-xl min-h-[200px] cursor-text focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm whitespace-pre-wrap break-words"
+        className="relative font-mono text-lg leading-relaxed p-6 bg-white border border-gray-300 rounded-xl min-h-[200px] cursor-text focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
         style={{ 
-          width: 'calc(100% - 0px)', // Force consistent width
-          maxWidth: '100%',
+          whiteSpace: 'pre-wrap',
+          wordWrap: 'break-word',
+          overflowWrap: 'break-word',
+          width: '100%',
+          boxSizing: 'border-box'
         }}
         tabIndex={0} 
         onKeyDown={onKeyDown} 
@@ -26,14 +74,36 @@ function TypingPractice({
         aria-multiline="true" 
         aria-label="Typing practice area"
       >
-        {target.split('').map((char, idx) => (
-          <span key={idx} className={
-            idx < inputLen ? (input[idx] === char ? 'text-black bg-green-100' : 'text-white bg-red-500') :
-            idx === inputLen ? 'bg-blue-200 animate-pulse' : 'text-gray-400'
-          }>
-            {char === ' ' && idx >= inputLen ? '\u00A0' : char}
-          </span>
-        ))}
+        {elements.map((element, elementIdx) => {
+          if (element.type === 'space') {
+            const idx = element.startIdx;
+            const className = 
+              idx < inputLen ? (input[idx] === ' ' ? 'text-black bg-green-100' : 'text-white bg-red-500') :
+              idx === inputLen ? 'bg-blue-200 animate-pulse' : 'text-gray-400';
+            return (
+              <span key={`space-${elementIdx}`} className={className}>
+                {idx >= inputLen ? '\u00A0' : ' '}
+              </span>
+            );
+          } else {
+            // Render word
+            return (
+              <span key={`word-${elementIdx}`} style={{ display: 'inline-block' }}>
+                {element.text.split('').map((char, charIdx) => {
+                  const idx = element.startIdx + charIdx;
+                  const className = 
+                    idx < inputLen ? (input[idx] === char ? 'text-black bg-green-100' : 'text-white bg-red-500') :
+                    idx === inputLen ? 'bg-blue-200 animate-pulse' : 'text-gray-400';
+                  return (
+                    <span key={`char-${idx}`} className={className}>
+                      {char}
+                    </span>
+                  );
+                })}
+              </span>
+            );
+          }
+        })}
         {inputLen > target.length && <span className="text-white bg-red-500">{input.substring(target.length)}</span>}
       </div>
     );
