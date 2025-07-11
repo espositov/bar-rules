@@ -218,6 +218,140 @@ const useRulesData = (LOCAL_STORAGE_KEYS) => {
     }
   }, [selectedTopic, selectedSubtopic, getRulesFromSelection, currentRule, getRuleId, masteredRules]);
 
+  // Add new subtopic to the selected topic
+  const addSubtopic = useCallback((topicName, subtopicName) => {
+    if (!topicName || !subtopicName) return false;
+    
+    setRulesByTopic(prevRules => {
+      const newRules = { ...prevRules };
+      
+      // Ensure the topic exists
+      if (!newRules[topicName]) {
+        newRules[topicName] = {};
+      }
+      
+      // If the topic currently has direct rules (shouldn't happen per requirements),
+      // migrate them to a "General" subtopic
+      if (Array.isArray(newRules[topicName])) {
+        const existingRules = newRules[topicName];
+        newRules[topicName] = {
+          'General': existingRules
+        };
+      }
+      
+      // Add the new subtopic with an empty rules array
+      if (!newRules[topicName][subtopicName]) {
+        newRules[topicName][subtopicName] = [];
+      }
+      
+      // Save to localStorage
+      localStorage.setItem(LOCAL_STORAGE_KEYS.USER_RULES, JSON.stringify(newRules));
+      
+      return newRules;
+    });
+    
+    // Select the newly added subtopic
+    setSelectedSubtopic(subtopicName);
+    
+    return true;
+  }, [LOCAL_STORAGE_KEYS.USER_RULES]);
+
+  // Delete a subtopic from the selected topic
+  const deleteSubtopic = useCallback((topicName, subtopicName) => {
+    if (!topicName || !subtopicName) return false;
+    
+    setRulesByTopic(prevRules => {
+      const newRules = { ...prevRules };
+      
+      // Check if topic and subtopic exist
+      if (!newRules[topicName] || !newRules[topicName][subtopicName]) {
+        return prevRules;
+      }
+      
+      // Delete the subtopic
+      delete newRules[topicName][subtopicName];
+      
+      // Save to localStorage
+      localStorage.setItem(LOCAL_STORAGE_KEYS.USER_RULES, JSON.stringify(newRules));
+      
+      return newRules;
+    });
+    
+    // If the deleted subtopic was selected, select another subtopic or clear selection
+    if (selectedSubtopic === subtopicName) {
+      const topicData = rulesByTopic[topicName];
+      if (topicData && typeof topicData === 'object') {
+        const remainingSubtopics = Object.keys(topicData).filter(s => s !== subtopicName);
+        if (remainingSubtopics.length > 0) {
+          setSelectedSubtopic(remainingSubtopics[0]);
+          const rules = topicData[remainingSubtopics[0]];
+          if (rules && rules.length > 0) {
+            setCurrentRule(rules[Math.floor(Math.random() * rules.length)]);
+          }
+        } else {
+          setSelectedSubtopic('');
+          setCurrentRule(null);
+        }
+      }
+    }
+    
+    return true;
+  }, [selectedSubtopic, rulesByTopic, LOCAL_STORAGE_KEYS.USER_RULES]);
+
+  // Add new rule to the selected topic/subtopic
+  const addRule = useCallback((topicName, subtopicName, ruleName, ruleText) => {
+    if (!topicName || !ruleName || !ruleText) return false;
+    
+    setRulesByTopic(prevRules => {
+      const newRules = JSON.parse(JSON.stringify(prevRules)); // Deep clone
+      
+      // Generate a new ID - find the highest ID and increment
+      let maxId = 0;
+      const findMaxId = (data) => {
+        if (Array.isArray(data)) {
+          data.forEach(rule => {
+            if (rule.id) {
+              const numId = typeof rule.id === 'string' ? parseInt(rule.id.replace(/\D/g, ''), 10) : rule.id;
+              if (!isNaN(numId) && numId > maxId) maxId = numId;
+            }
+          });
+        } else if (typeof data === 'object' && data !== null) {
+          Object.values(data).forEach(val => findMaxId(val));
+        }
+      };
+      findMaxId(newRules);
+      
+      const newRuleId = `rule-${maxId + 1}`;
+      const newRule = {
+        id: newRuleId,
+        name: ruleName,
+        text: ruleText
+      };
+      
+      // Add the rule to the appropriate location
+      if (subtopicName && newRules[topicName] && newRules[topicName][subtopicName]) {
+        // Add to subtopic
+        newRules[topicName][subtopicName].push(newRule);
+      } else if (!subtopicName && newRules[topicName] && Array.isArray(newRules[topicName])) {
+        // Add directly to topic (shouldn't happen per requirements, but handle it)
+        newRules[topicName].push(newRule);
+      } else {
+        // Invalid structure
+        return prevRules;
+      }
+      
+      // Save to localStorage
+      localStorage.setItem(LOCAL_STORAGE_KEYS.USER_RULES, JSON.stringify(newRules));
+      
+      // Set the new rule as current
+      setCurrentRule(newRule);
+      
+      return newRules;
+    });
+    
+    return true;
+  }, [LOCAL_STORAGE_KEYS.USER_RULES]);
+
   // Load initial data
   useEffect(() => {
     const usingExcel = localStorage.getItem(LOCAL_STORAGE_KEYS.IS_USING_EXCEL_DATA) === 'true';
@@ -296,7 +430,10 @@ const useRulesData = (LOCAL_STORAGE_KEYS) => {
       markAsMastered: markRuleAsMastered,
       setConfidenceLevel: setRuleConfidenceLevel,
       loadRules: loadAndSetRules,
-      initializeFirstRule
+      initializeFirstRule,
+      addSubtopic,
+      deleteSubtopic,
+      addRule
     },
     
     // Utilities

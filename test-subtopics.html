@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Subtopic Add/Delete</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Subtopic Add/Delete Functionality Test</h1>
+    
+    <div class="test">
+        <h2>Test Instructions:</h2>
+        <ol>
+            <li>Open the app by running <code>npm run dev</code></li>
+            <li>Select any topic from the dropdown or grid</li>
+            <li>Look for the "+ Add" button next to "Subtopics" header</li>
+            <li>Click the "+ Add" button to open the modal</li>
+            <li>Enter a new subtopic name and click "Add Subtopic"</li>
+            <li>Verify the new subtopic appears in the list</li>
+            <li>Hover over any subtopic to see the delete (X) button</li>
+            <li>Click the delete button to see the confirmation dialog</li>
+            <li>Confirm deletion and verify the subtopic is removed</li>
+        </ol>
+    </div>
+    
+    <div class="test">
+        <h2>Manual Test Checklist:</h2>
+        <ul>
+            <li>✓ Add button is visible when a topic is selected</li>
+            <li>✓ Add modal opens when clicking the add button</li>
+            <li>✓ Can enter subtopic name in the modal</li>
+            <li>✓ Validation prevents empty subtopic names</li>
+            <li>✓ Validation prevents duplicate subtopic names</li>
+            <li>✓ New subtopic appears after adding</li>
+            <li>✓ New subtopic is automatically selected</li>
+            <li>✓ Delete button appears on hover</li>
+            <li>✓ Delete confirmation dialog shows correct subtopic name</li>
+            <li>✓ Delete confirmation shows rule count warning</li>
+            <li>✓ Subtopic is removed after confirming deletion</li>
+            <li>✓ If deleted subtopic was selected, another is selected</li>
+            <li>✓ Data persists after page reload</li>
+        </ul>
+    </div>
+    
+    <div class="test">
+        <h2>Test Data Structure:</h2>
+        <p>You can check localStorage to verify the data structure:</p>
+        <button onclick="showLocalStorage()">Show localStorage Data</button>
+        <pre id="localStorage-output"></pre>
+    </div>
+    
+    <script>
+        function showLocalStorage() {
+            const userRules = localStorage.getItem('userRules');
+            const output = document.getElementById('localStorage-output');
+            if (userRules) {
+                try {
+                    const data = JSON.parse(userRules);
+                    output.textContent = JSON.stringify(data, null, 2);
+                } catch (e) {
+                    output.textContent = 'Error parsing data: ' + e.message;
+                }
+            } else {
+                output.textContent = 'No rules data found in localStorage';
+            }
+        }
+    </script>
+</body>
+</html>

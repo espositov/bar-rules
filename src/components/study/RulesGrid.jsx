@@ -16,7 +16,10 @@ function RulesGrid({
   getRuleId,
   onSubtopicSelect,
   onRuleSelect,
-  onPracticeModeToggle
+  onPracticeModeToggle,
+  onAddSubtopic,
+  onDeleteSubtopic,
+  onAddRule
 }) {
   
   const getSubtopicProgress = (subtopic) => {
@@ -31,9 +34,21 @@ function RulesGrid({
         {/* Left: Subtopics (2x2 grid) */}
         {hasSubtopics(selectedTopic) && (
           <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-4 border border-orange-200">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-              <h2 className="text-base font-bold text-orange-800">Subtopics</h2>
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                <h2 className="text-base font-bold text-orange-800">Subtopics</h2>
+              </div>
+              <button
+                onClick={onAddSubtopic}
+                className="flex items-center gap-1 px-2 py-1 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-all duration-200"
+                title="Add new subtopic"
+              >
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                <span className="text-xs font-medium">Add</span>
+              </button>
             </div>
             
             {subtopicDisplayMode === 'buttons' ? (
@@ -43,16 +58,19 @@ function RulesGrid({
                   const subtopicRules = rulesByTopic[selectedTopic][subtopic] || [];
                   
                   return (
-                    <button 
-                      key={subtopic} 
-                      onClick={() => onSubtopicSelect(subtopic)}
-                      className={`group relative overflow-hidden rounded-lg p-2 text-left transition-all duration-200 ${
+                    <div
+                      key={subtopic}
+                      className={`group relative overflow-hidden rounded-lg p-2 transition-all duration-200 ${
                         selectedSubtopic === subtopic 
                           ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md' 
                           : 'bg-white hover:bg-orange-50 border border-orange-300 hover:border-orange-400'
                       }`}
                     >
-                      <div className="flex flex-col">
+                      <button
+                        onClick={() => onSubtopicSelect(subtopic)}
+                        className="w-full text-left"
+                      >
+                        <div className="flex flex-col">
                         <h3 className={`font-semibold text-xs leading-tight truncate ${selectedSubtopic === subtopic ? 'text-white' : 'text-gray-800'}`}>
                           {subtopic}
                         </h3>
@@ -75,8 +93,27 @@ function RulesGrid({
                             style={{ width: `${progress}%` }}
                           ></div>
                         </div>
-                      </div>
-                    </button>
+                        </div>
+                      </button>
+                      
+                      {/* Delete button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onDeleteSubtopic(subtopic);
+                        }}
+                        className={`absolute top-1 right-1 p-1 rounded transition-all duration-200 opacity-0 group-hover:opacity-100 ${
+                          selectedSubtopic === subtopic
+                            ? 'hover:bg-orange-600 text-white'
+                            : 'hover:bg-red-100 text-red-600'
+                        }`}
+                        title="Delete subtopic"
+                      >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
                   );
                 })}
               </div>
@@ -91,34 +128,56 @@ function RulesGrid({
                     return (
                       <div 
                         key={subtopic} 
-                        onClick={() => onSubtopicSelect(subtopic)}
-                        className={`p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                        className={`group relative p-3 rounded-lg transition-all duration-200 ${
                           isSelected 
                             ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md' 
                             : 'bg-white hover:bg-orange-50 border border-gray-100 hover:border-orange-200'
                         }`}
                       >
-                        <div className="flex justify-between items-center">
-                          <h4 className={`font-semibold text-sm truncate ${isSelected ? 'text-white' : 'text-gray-800'}`}>
-                            {subtopic}
-                          </h4>
-                          <div className="flex items-center gap-2 ml-2">
-                            <span className={`text-xs ${isSelected ? 'text-orange-100' : 'text-gray-500'}`}>
-                              {subtopicRules.length}
-                            </span>
-                            {showProgressPercentages && (
-                              <span className={`text-xs font-medium ${isSelected ? 'text-orange-100' : 'text-gray-600'}`}>
-                                {progress}%
+                        <div 
+                          onClick={() => onSubtopicSelect(subtopic)}
+                          className="cursor-pointer"
+                        >
+                          <div className="flex justify-between items-center">
+                            <h4 className={`font-semibold text-sm truncate ${isSelected ? 'text-white' : 'text-gray-800'}`}>
+                              {subtopic}
+                            </h4>
+                            <div className="flex items-center gap-2 ml-2">
+                              <span className={`text-xs ${isSelected ? 'text-orange-100' : 'text-gray-500'}`}>
+                                {subtopicRules.length}
                               </span>
-                            )}
+                              {showProgressPercentages && (
+                                <span className={`text-xs font-medium ${isSelected ? 'text-orange-100' : 'text-gray-600'}`}>
+                                  {progress}%
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <div className={`mt-2 h-1 rounded-full overflow-hidden ${isSelected ? 'bg-orange-400' : 'bg-gray-200'}`}>
+                            <div 
+                              className={`h-full transition-all duration-300 ${isSelected ? 'bg-white' : 'bg-orange-500'}`}
+                              style={{ width: `${progress}%` }}
+                            ></div>
                           </div>
                         </div>
-                        <div className={`mt-2 h-1 rounded-full overflow-hidden ${isSelected ? 'bg-orange-400' : 'bg-gray-200'}`}>
-                          <div 
-                            className={`h-full transition-all duration-300 ${isSelected ? 'bg-white' : 'bg-orange-500'}`}
-                            style={{ width: `${progress}%` }}
-                          ></div>
-                        </div>
+                        
+                        {/* Delete button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onDeleteSubtopic(subtopic);
+                          }}
+                          className={`absolute top-2 right-2 p-1 rounded transition-all duration-200 opacity-0 group-hover:opacity-100 ${
+                            isSelected
+                              ? 'hover:bg-orange-600 text-white'
+                              : 'hover:bg-red-100 text-red-600'
+                          }`}
+                          title="Delete subtopic"
+                        >
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
                       </div>
                     );
                   })}
@@ -140,15 +199,30 @@ function RulesGrid({
                 </span>
               </div>
               
-              <label className="flex items-center gap-2 px-2 py-1 bg-white rounded-lg border border-violet-300 cursor-pointer hover:bg-violet-50 transition-all duration-200">
-                <input 
-                  type="checkbox" 
-                  checked={practiceMode} 
-                  onChange={onPracticeModeToggle} 
-                  className="w-3 h-3 rounded border-violet-300 text-violet-600 focus:ring-violet-500"
-                />
-                <span className="text-xs font-medium text-violet-700">Practice</span>
-              </label>
+              <div className="flex items-center gap-2">
+                {selectedTopic && (!hasSubtopics(selectedTopic) || selectedSubtopic) && (
+                  <button
+                    onClick={onAddRule}
+                    className="flex items-center gap-1 px-2 py-1 bg-violet-500 hover:bg-violet-600 text-white rounded-lg transition-all duration-200"
+                    title="Add new rule"
+                  >
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span className="text-xs font-medium">Add</span>
+                  </button>
+                )}
+                
+                <label className="flex items-center gap-2 px-2 py-1 bg-white rounded-lg border border-violet-300 cursor-pointer hover:bg-violet-50 transition-all duration-200">
+                  <input 
+                    type="checkbox" 
+                    checked={practiceMode} 
+                    onChange={onPracticeModeToggle} 
+                    className="w-3 h-3 rounded border-violet-300 text-violet-600 focus:ring-violet-500"
+                  />
+                  <span className="text-xs font-medium text-violet-700">Practice</span>
+                </label>
+              </div>
             </div>
           
           {selectedTopic && (!hasSubtopics(selectedTopic) || selectedSubtopic) && getRulesFromSelection(selectedTopic, selectedSubtopic).length > 0 ? (

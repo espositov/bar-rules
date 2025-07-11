@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Add Rule Functionality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .checklist {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            padding: 5px 0;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 1.2em;
+        }
+        .checklist li.done:before {
+            content: "☑ ";
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Rule Functionality Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>🚀 Quick Start Test</h2>
+        <ol>
+            <li>Run <code>npm run dev</code> to start the application</li>
+            <li>Select a topic (e.g., "Business Associations")</li>
+            <li>Select a subtopic (e.g., "Agency")</li>
+            <li>Look for the violet "+ Add" button next to "Rules"</li>
+            <li>Click it and add a test rule</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 Manual Test Checklist</h2>
+        <ul class="checklist">
+            <li>Add button is visible when topic and subtopic are selected</li>
+            <li>Add button has violet/purple color (matches Rules theme)</li>
+            <li>Modal opens when clicking the Add button</li>
+            <li>Modal shows current location (Topic > Subtopic)</li>
+            <li>Can enter rule name in the first field</li>
+            <li>Can enter rule text in the textarea</li>
+            <li>Validation prevents empty rule name</li>
+            <li>Validation prevents empty rule text</li>
+            <li>Validation prevents duplicate rule names</li>
+            <li>New rule appears immediately in the rules grid</li>
+            <li>New rule is automatically selected for practice</li>
+            <li>Rule count updates in the Rules header</li>
+            <li>Data persists after page reload</li>
+            <li>Cancel button closes modal without saving</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🧪 Test Scenarios</h2>
+        
+        <h3>Test 1: Basic Rule Addition</h3>
+        <p>Add a simple rule with name "Test Rule" and text "This is a test rule definition."</p>
+        <p class="success">Expected: Rule added successfully and appears in grid</p>
+        
+        <h3>Test 2: Empty Fields Validation</h3>
+        <p>Try to add a rule with:</p>
+        <ul>
+            <li>Empty name, filled text</li>
+            <li>Filled name, empty text</li>
+            <li>Both fields empty</li>
+        </ul>
+        <p class="error">Expected: Error message appears, rule not added</p>
+        
+        <h3>Test 3: Duplicate Name Validation</h3>
+        <p>Try to add a rule with the same name as an existing rule</p>
+        <p class="error">Expected: "A rule with this name already exists" error</p>
+        
+        <h3>Test 4: Special Characters</h3>
+        <p>Add rules with special characters in names:</p>
+        <ul>
+            <li>Rule with quotes: "Smith's Rule"</li>
+            <li>Rule with symbols: "Rule #1 (Important!)"</li>
+            <li>Rule with unicode: "Règle française"</li>
+        </ul>
+        <p class="success">Expected: All should work correctly</p>
+        
+        <h3>Test 5: Long Content</h3>
+        <p>Add a rule with very long name and text (100+ characters each)</p>
+        <p class="success">Expected: Should handle gracefully, possibly truncate in display</p>
+    </div>
+
+    <div class="test-section">
+        <h2>🔍 Console Tests</h2>
+        <button onclick="runConsoleTests()">Run Console Tests</button>
+        <pre id="console-output">Click the button to run automated tests...</pre>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Data Structure Verification</h2>
+        <button onclick="showDataStructure()">Show Current Data Structure</button>
+        <pre id="data-output">Click to see localStorage data...</pre>
+    </div>
+
+    <script>
+        function runConsoleTests() {
+            const output = document.getElementById('console-output');
+            let results = [];
+            
+            results.push('=== Running Add Rule Tests ===\n');
+            
+            // Test 1: Check localStorage
+            const rulesData = localStorage.getItem('userRules');
+            if (rulesData) {
+                results.push('✅ Test 1: Rules data found in localStorage');
+                
+                try {
+                    const data = JSON.parse(rulesData);
+                    results.push(`✅ Test 2: Valid JSON structure`);
+                    
+                    // Count total rules
+                    let totalRules = 0;
+                    let maxId = 0;
+                    
+                    Object.values(data).forEach(topic => {
+                        if (typeof topic === 'object' && !Array.isArray(topic)) {
+                            Object.values(topic).forEach(subtopic => {
+                                if (Array.isArray(subtopic)) {
+                                    totalRules += subtopic.length;
+                                    subtopic.forEach(rule => {
+                                        if (rule.id) {
+                                            const numId = parseInt(rule.id.toString().replace(/\D/g, ''), 10);
+                                            if (!isNaN(numId) && numId > maxId) maxId = numId;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                    
+                    results.push(`✅ Test 3: Found ${totalRules} total rules`);
+                    results.push(`✅ Test 4: Highest rule ID: ${maxId}`);
+                    
+                    // Test rule structure
+                    let validStructure = true;
+                    let sampleRule = null;
+                    
+                    outer: for (const topic of Object.values(data)) {
+                        if (typeof topic === 'object' && !Array.isArray(topic)) {
+                            for (const subtopic of Object.values(topic)) {
+                                if (Array.isArray(subtopic) && subtopic.length > 0) {
+                                    sampleRule = subtopic[0];
+                                    break outer;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (sampleRule) {
+                        const hasRequiredFields = sampleRule.id && sampleRule.name && sampleRule.text;
+                        if (hasRequiredFields) {
+                            results.push('✅ Test 5: Rule structure is valid (id, name, text)');
+                        } else {
+                            results.push('❌ Test 5: Rule missing required fields');
+                        }
+                    }
+                    
+                } catch (e) {
+                    results.push(`❌ Test 2: Error parsing JSON: ${e.message}`);
+                }
+            } else {
+                results.push('❌ Test 1: No rules data found - load the app first');
+            }
+            
+            results.push('\n=== Test Summary ===');
+            results.push('To test rule addition:');
+            results.push('1. Select a topic and subtopic');
+            results.push('2. Click the violet "+ Add" button');
+            results.push('3. Enter rule name and text');
+            results.push('4. Click "Add Rule"');
+            results.push('5. Verify the rule appears and is selected');
+            
+            output.textContent = results.join('\n');
+        }
+        
+        function showDataStructure() {
+            const output = document.getElementById('data-output');
+            const rulesData = localStorage.getItem('userRules');
+            
+            if (rulesData) {
+                try {
+                    const data = JSON.parse(rulesData);
+                    // Show a sample of the structure
+                    const sample = {};
+                    
+                    for (const [topicName, topicData] of Object.entries(data)) {
+                        sample[topicName] = {};
+                        if (typeof topicData === 'object' && !Array.isArray(topicData)) {
+                            for (const [subtopicName, rules] of Object.entries(topicData)) {
+                                if (Array.isArray(rules)) {
+                                    sample[topicName][subtopicName] = `[${rules.length} rules]`;
+                                    if (rules.length > 0) {
+                                        sample[topicName][subtopicName] += '\n  First rule: ' + JSON.stringify(rules[0], null, 2);
+                                    }
+                                }
+                            }
+                        }
+                        // Only show first topic for brevity
+                        break;
+                    }
+                    
+                    output.textContent = JSON.stringify(sample, null, 2);
+                } catch (e) {
+                    output.textContent = `Error parsing data: ${e.message}`;
+                }
+            } else {
+                output.textContent = 'No rules data found in localStorage';
+            }
+        }
+    </script>
+</body>
+</html>

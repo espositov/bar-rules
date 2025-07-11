@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import DiffMatchPatch from 'diff-match-patch';
 import BrowsePopup from './components/BrowsePopup';
 import SettingsPopup from './components/SettingsPopup';
+import AddSubtopicModal from './components/AddSubtopicModal';
+import AddRuleModal from './components/AddRuleModal';
+import DeleteConfirmationModal from './components/DeleteConfirmationModal';
 import Header from './components/layout/Header';
 import TopicSelection from './components/study/TopicSelection';
 import RulesGrid from './components/study/RulesGrid';
@@ -46,7 +49,7 @@ function App() {
   const { mastered: masteredRules, setMastered: setMasteredRules, confidence: ruleConfidence, setConfidence: setRuleConfidence } = progress;
   const { isUsingExcelData, setIsUsingExcelData } = meta;
   const { getRuleId, hasSubtopics, getRulesFromSelection } = utils;
-  const { selectTopic, selectSubtopic, loadNewRule, markAsMastered: markRuleAsMastered, setConfidenceLevel: setRuleConfidenceLevel, initializeFirstRule } = actions;
+  const { selectTopic, selectSubtopic, loadNewRule, markAsMastered: markRuleAsMastered, setConfidenceLevel: setRuleConfidenceLevel, initializeFirstRule, addSubtopic, deleteSubtopic, addRule } = actions;
 
   // UI State - grouped for better organization
   const [uiState, setUiState] = useState({
@@ -58,7 +61,11 @@ function App() {
     showSettings: false,
     showHints: false,
     selfRating: null,
-    uploadProgress: ''
+    uploadProgress: '',
+    showAddSubtopicModal: false,
+    showAddRuleModal: false,
+    showDeleteConfirmation: false,
+    subtopicToDelete: null
   });
 
   // Display preferences - grouped separately as they persist to localStorage
@@ -281,6 +288,9 @@ function App() {
             onSubtopicSelect={(subtopic) => selectSubtopic(subtopic, resetUIForNewRuleSelection)}
             onRuleSelect={(rule) => { setCurrentRule(rule); resetUIForNewRuleSelection(); }}
             onPracticeModeToggle={() => updateUiState({ practiceMode: !uiState.practiceMode })}
+            onAddSubtopic={() => updateUiState({ showAddSubtopicModal: true })}
+            onDeleteSubtopic={(subtopic) => updateUiState({ showDeleteConfirmation: true, subtopicToDelete: subtopic })}
+            onAddRule={() => updateUiState({ showAddRuleModal: true })}
           />
 
           {currentRule && (
@@ -328,6 +338,47 @@ function App() {
         setCurrentRule={setCurrentRule}
         resetUIForNewRuleSelection={resetUIForNewRuleSelection}
         LOCAL_STORAGE_KEYS={LOCAL_STORAGE_KEYS}
+      />
+      
+      <AddSubtopicModal
+        isOpen={uiState.showAddSubtopicModal}
+        onClose={() => updateUiState({ showAddSubtopicModal: false })}
+        onAdd={(subtopicName) => {
+          addSubtopic(selectedTopic, subtopicName);
+          updateUiState({ showAddSubtopicModal: false });
+        }}
+        selectedTopic={selectedTopic}
+        existingSubtopics={hasSubtopics(selectedTopic) ? Object.keys(rulesByTopic[selectedTopic] || {}) : []}
+      />
+      
+      <AddRuleModal
+        isOpen={uiState.showAddRuleModal}
+        onClose={() => updateUiState({ showAddRuleModal: false })}
+        onAdd={(ruleName, ruleText) => {
+          addRule(selectedTopic, selectedSubtopic, ruleName, ruleText);
+          updateUiState({ showAddRuleModal: false });
+          resetUIForNewRuleSelection();
+        }}
+        selectedTopic={selectedTopic}
+        selectedSubtopic={selectedSubtopic}
+        existingRules={getRulesFromSelection(selectedTopic, selectedSubtopic)}
+      />
+      
+      <DeleteConfirmationModal
+        isOpen={uiState.showDeleteConfirmation}
+        onClose={() => updateUiState({ showDeleteConfirmation: false, subtopicToDelete: null })}
+        onConfirm={() => {
+          if (uiState.subtopicToDelete) {
+            deleteSubtopic(selectedTopic, uiState.subtopicToDelete);
+          }
+          updateUiState({ showDeleteConfirmation: false, subtopicToDelete: null });
+        }}
+        subtopicName={uiState.subtopicToDelete}
+        ruleCount={
+          uiState.subtopicToDelete && rulesByTopic[selectedTopic] && rulesByTopic[selectedTopic][uiState.subtopicToDelete]
+            ? rulesByTopic[selectedTopic][uiState.subtopicToDelete].length
+            : 0
+        }
       />
       
       <SettingsPopup 
